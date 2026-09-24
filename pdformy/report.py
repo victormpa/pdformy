@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import getpass
+from datetime import datetime
 from pathlib import Path
 from typing import Any
 
@@ -7,22 +9,67 @@ import yaml
 from fpdf import FPDF
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 
+from .blocks.band import PageBand, draw_footer, draw_header, measure_band
 from .blocks.section import Section
 from .blocks.summary import Summary
 from .context import RenderContext, Theme
 
 
 class ReportPDF(FPDF):
-    def __init__(self, theme: Theme) -> None:
+    def __init__(
+        self,
+        theme: Theme,
+        *,
+        header: PageBand | None = None,
+        footer: PageBand | None = None,
+        base_dir: Path = Path("."),
+        variables: dict[str, str] | None = None,
+    ) -> None:
         super().__init__(orientation=theme.orientation, format=theme.page_format)
         self.theme = theme
+        self.page_header = header
+        self.page_footer = footer
+        self.base_dir = base_dir
+        self.band_variables = variables or {}
+        self._footer_reserve = theme.margin
         self.set_margins(theme.margin, theme.margin)
         self.set_auto_page_break(True, margin=theme.margin)
         for style, path in theme.font_files.items():
             fpdf_style = {"regular": "", "bold": "B", "italic": "I", "bold_italic": "BI"}[style]
             self.add_font(theme.font, fpdf_style, str(path))
 
+    def _band_ctx(self) -> RenderContext:
+        return RenderContext(pdf=self, theme=self.theme, base_dir=self.base_dir)
+
+    def _page_variables(self) -> dict[str, str]:
+        return {
+            **self.band_variables,
+            "current_page": str(self.page_no()),
+            "total_pages": self.str_alias_nb_pages or "{nb}",
+        }
+
+    def header(self) -> None:
+        ctx = self._band_ctx()
+        variables = self._page_variables()
+        reserve = self.theme.margin
+        if self.page_footer is not None and self.page_footer.visible_on(self.page):
+            reserve = max(self.theme.margin, measure_band(self.page_footer, ctx, variables))
+        self._footer_reserve = reserve
+        self.set_auto_page_break(True, margin=reserve)
+
+        if self.page_header is not None and self.page_header.visible_on(self.page):
+            draw_header(self.page_header, ctx, variables)
+
     def footer(self) -> None:
+        if self.page_footer is not None:
+            if self.page_footer.visible_on(self.page):
+                draw_footer(
+                    self.page_footer,
+                    self._band_ctx(),
+                    self._page_variables(),
+                    self._footer_reserve,
+                )
+            return
         self.set_y(-self.theme.margin / 1.6)
         self.set_font(self.theme.font, "", self.theme.caption_size)
         self.set_text_color(*self.theme.muted_color)
@@ -39,6 +86,8 @@ class Report(BaseModel):
     author: str | None = None
     summary: Summary | None = None
     style: Theme = Theme()
+    header: PageBand | None = None
+    footer: PageBand | None = None
     sections: list[Section] = []
     # Directory relative paths (images) resolve against. Set by from_yaml.
     base_dir: Path = Field(default=Path("."), exclude=True)
@@ -68,7 +117,25 @@ class Report(BaseModel):
         return cls.from_dict(data, base_dir=path.parent)
 
     def render(self) -> ReportPDF:
-        pdf = ReportPDF(self.style)
+        now = datetime.now().astimezone()
+        offset = now.strftime("%z")
+        offset = f"{offset[:-2]}:{offset[-2:]}" if offset else ""
+        variables = {
+            "datetime": f"{now.strftime('%Y-%m-%d %H:%M')} {offset}".rstrip(),
+            "date": now.strftime("%Y-%m-%d"),
+            "time": now.strftime("%H:%M"),
+            "user": getpass.getuser(),
+            "title": self.title,
+            "subtitle": self.subtitle or "",
+            "author": self.author or "",
+        }
+        pdf = ReportPDF(
+            self.style,
+            header=self.header,
+            footer=self.footer,
+            base_dir=self.base_dir,
+            variables=variables,
+        )
         pdf.set_title(self.title)
         if self.author:
             pdf.set_author(self.author)

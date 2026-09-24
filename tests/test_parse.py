@@ -3,7 +3,7 @@ from pathlib import Path
 import pytest
 from pydantic import ValidationError
 
-from pdformy import Chart, Grid, Report, Summary, Table, Text
+from pdformy import Chart, Grid, PageBand, Report, Summary, Table, Text
 
 ROOT = Path(__file__).parent.parent
 
@@ -14,6 +14,41 @@ def report(*content, **extra):
         "sections": [{"title": "S", "content": list(content)}],
         **extra,
     }
+
+
+def test_header_footer_parse():
+    r = Report.from_dict(
+        report(
+            {"text": "body"},
+            header={
+                "skip": 1,
+                "start": {"text": "Top left"},
+                "center": {"text": "Top center"},
+                "end": {"text": "Top right"},
+            },
+            footer={
+                "skip": 0,
+                "start": {"text": "Generated at {{datetime}} by {{user}}"},
+                "center": {"text": "Page {{current_page}} of {{total_pages}}"},
+                "end": {"text": "Bottom right"},
+            },
+        )
+    )
+    assert isinstance(r.header, PageBand)
+    assert r.header.skip == 1
+    assert r.header.start == Text(markdown="Top left")
+    assert r.footer is not None and r.footer.skip == 0
+    assert r.footer.center == Text(markdown="Page {{current_page}} of {{total_pages}}")
+
+
+def test_header_skip_must_be_non_negative():
+    with pytest.raises(ValidationError, match="skip"):
+        Report.from_dict(report({"text": "x"}, header={"skip": -1, "start": {"text": "a"}}))
+
+
+def test_header_unknown_slot_key_is_rejected():
+    with pytest.raises(ValidationError, match="header"):
+        Report.from_dict(report({"text": "x"}, header={"middle": {"text": "a"}}))
 
 
 def test_template_loads():

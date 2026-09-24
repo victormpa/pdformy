@@ -48,6 +48,34 @@ sections:
 
 A section always renders in this order: its title, its subtitle, the blocks in `content`, then its child `sections`. Each section title becomes an entry in the PDF outline (bookmarks) and in the table of contents.
 
+## Header and footer
+
+Optional `header` and `footer` bands stick to the top and bottom of every page. Each band has three slots (`start`, `center`, `end`) that hold one block each, usually `text`. `skip` omits the band on the first *n* pages.
+
+```yaml
+header:
+  skip: 1
+  start: {text: Top left}
+  center: {text: Top center}
+  end: {text: Top right}
+footer:
+  start: {text: "Generated at {{datetime}} by {{user}}"}
+  center: {text: "Page {{current_page}} of {{total_pages}}"}
+  end: {text: Bottom right}
+```
+
+Without `footer`, each page still shows a centered page number. With `footer`, that default is replaced. Slot text can use these variables (filled in when the page is drawn):
+
+| Variable | Value |
+| --- | --- |
+| `{{current_page}}` | Page number |
+| `{{total_pages}}` | Total page count |
+| `{{datetime}}` | Local `YYYY-MM-DD HH:MM ±HH:MM` (same on every page) |
+| `{{date}}` | Local `YYYY-MM-DD` |
+| `{{time}}` | Local `HH:MM` |
+| `{{user}}` | OS account name |
+| `{{title}}`, `{{subtitle}}`, `{{author}}` | Report fields (`subtitle` / `author` empty when unset) |
+
 ## Blocks
 
 Each item in `content` is a mapping with one key that names the block. Blocks marked *shorthand* can be written as a plain value: `- text: "Hello"` or `- image: assets/logo.png`.

@@ -2,6 +2,7 @@
 
 from pathlib import Path
 
+from .blocks.band import PageBand
 from .blocks.base import Block, register
 from .blocks.chart import Chart, Point, Series
 from .blocks.grid import Grid
@@ -15,8 +16,8 @@ from .context import RenderContext, Theme
 from .report import Report
 
 __all__ = [
-    "Block", "Chart", "Column", "Grid", "Image", "Point", "RenderContext", "Report", "Section",
-    "Series", "Subtitle", "Summary", "Table", "Text", "Theme", "Title", "load", "register",
+    "Block", "Chart", "Column", "Grid", "Image", "PageBand", "Point", "RenderContext", "Report",
+    "Section", "Series", "Subtitle", "Summary", "Table", "Text", "Theme", "Title", "load", "register",
 ]
 
 
