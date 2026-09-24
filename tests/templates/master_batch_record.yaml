@@ -1,0 +1,479 @@
+# Master Batch Record per sandbox/ebr.md: 21 CFR 211.186 structure, blank capture columns,
+# signature block, traceability matrices, grid header, 3-level TOC, yield-justification chart.
+title: Master Batch Record MBR-EXL-200-001
+subtitle: Examplol 200 mg film-coated tablets - 200,000 tablets - Version 3.0
+author: MS&T
+summary:
+  title: Contents
+  depth: 2
+style:
+  numbered: true
+
+sections:
+  - title: Document control
+    subtitle: 21 CFR 211.186(a), Part 11.50
+    content:
+      - grid:
+          columns: 2
+          content:
+            - table:
+                header: [Field, Value]
+                rows:
+                  - [MBR ID, MBR-EXL-200-001]
+                  - [Version, "3.0"]
+                  - [Status, EFFECTIVE]
+                  - [Effective date, 2026-10-05]
+                  - [Change control, CC-2026-0412]
+                caption: Table 1 - Record identity
+            - table:
+                header: [Field, Value]
+                rows:
+                  - [Product code, PRD-0012]
+                  - [Batch size, "200,000 tablets (82.400 kg)"]
+                  - [Site / area, Site 1 - Bldg B - Suite 3]
+                  - [Registration, "NDA 000000, 3.2.P.3.3"]
+                  - [Supersedes, "Version 2.1"]
+                caption: Table 2 - Product and scope
+      - text: |
+          This record is the approved template for every executed batch of this product,
+          strength and batch size. Only an **EFFECTIVE** version can instantiate a batch.
+          Every value below traces to the effective source cited in the *Ref.* columns.
+      - title: Summary of changes
+      - table:
+          header:
+            - name: Section
+              width: 1
+            - name: Change
+              width: 4
+            - name: Justification
+              width: 3
+          rows:
+            - ["6.2", Granulation end point now controlled by power draw, PV report PVR-0012 v2]
+            - ["8", Compression yield lower limit raised from 94.0% to 95.0%, APR 2025 yield trend]
+            - ["9", Label artwork updated to ART-0012-US v5, Change control CC-2026-0412]
+          caption: Table 3 - Changes from version 2.1
+
+    sections:
+      - title: Signatures
+        content:
+          - text: |
+              Each signature shows the printed name, date and time, and meaning (11.50), and is
+              bound to this exact version (11.70). The author may not sign as checker or approver.
+          - table:
+              header:
+                - name: Role
+                  width: 2
+                - name: Meaning of signature
+                  width: 3
+                - name: Printed name
+                  width: 3
+                - name: Date / time (UTC)
+                  width: 2
+                - name: Signature
+                  width: 2
+              rows:
+                - [Author, Authored, ~, ~, ~]
+                - [Independent checker, Independently checked, ~, ~, ~]
+                - [Production, Reviewed - Production, ~, ~, ~]
+                - [Quality Control, Reviewed - QC, ~, ~, ~]
+                - [Regulatory Affairs, Reviewed - Regulatory, ~, ~, ~]
+                - [Quality Assurance, Approved - QA, ~, ~, ~]
+              caption: Table 4 - Approval matrix
+
+  - title: Product definition
+    subtitle: 21 CFR 211.186(b)(1)-(2)
+    content:
+      - table:
+          header:
+            - name: Attribute
+              width: 2
+            - name: Value
+              width: 4
+            - name: Ref.
+              width: 2
+          rows:
+            - [Name and strength, Examplol 200 mg film-coated tablets, SPEC-FP-0012 v6]
+            - [Active per unit, Examplol 200.0 mg, 3.2.P.1]
+            - [Core tablet weight, 400.0 mg, 3.2.P.1]
+            - [Coated tablet weight, 412.0 mg, 3.2.P.1]
+            - [Description, "White, oval, biconvex film-coated tablet debossed 'E2' on one side", SPEC-FP-0012 v6]
+            - [Shelf life, 36 months, STAB-0012 v3]
+            - [Storage, "Store below 25 °C, protect from moisture", STAB-0012 v3]
+          caption: Table 5 - Product definition
+
+  - title: Formula and bill of materials
+    subtitle: 21 CFR 211.186(b)(3)-(5), 211.101(a)
+    content:
+      - text: |
+          All quantities are in **mg per tablet** and **kg per batch**. Batch quantities are
+          derived as `qty per unit × 200,000 tablets`. No overages are applied. The active is
+          formulated to 100% of label claim, adjusted for assay per section 3.1.
+      - table:
+          header:
+            - name: Item code
+              width: 1.4
+            - name: Component and grade
+              width: 2.8
+            - name: Function
+              width: 1.6
+            - name: mg/tab
+              type: float
+              format: .1f
+            - name: kg/batch
+              width: 1.2
+              type: float
+              format: .3f
+            - name: Spec. ref.
+              width: 2.2
+          rows:
+            - [API-0012, "Examplol, micronized (d90 <= 20 µm)", Active, 200.0, 40.000, SPEC-API-0012 v4]
+            - [RM-10023, "Microcrystalline cellulose, NF, 102 grade", Diluent, 150.0, 30.000, SPEC-RM-10023 v7]
+            - [RM-10041, "Croscarmellose sodium, NF (intragranular)", Disintegrant, 14.0, 2.800, SPEC-RM-10041 v3]
+            - [RM-10055, "Povidone K30, USP", Binder, 16.0, 3.200, SPEC-RM-10055 v5]
+            - [RM-10041, "Croscarmellose sodium, NF (extragranular)", Disintegrant, 14.0, 2.800, SPEC-RM-10041 v3]
+            - [RM-10060, "Colloidal silicon dioxide, NF", Glidant, 2.0, 0.400, SPEC-RM-10060 v2]
+            - [RM-10072, "Magnesium stearate, NF, vegetable", Lubricant, 4.0, 0.800, SPEC-RM-10072 v4]
+            - [RM-20010, "Film-coating system, white", Coating, 12.0, 2.400, SPEC-RM-20010 v3]
+            - [RM-90001, "Purified water, USP (removed in process)", Solvent, ~, 25.600, SPEC-RM-90001 v9]
+          caption: Table 6 - Bill of materials (coated tablet 412.0 mg; batch 82.400 kg)
+
+    sections:
+      - title: Potency adjustment
+        content:
+          - text: |
+              The API quantity is adjusted for the assay of the lot dispensed (anhydrous basis,
+              from the LIMS release result). MCC 102 compensates so the batch weight is unchanged.
+
+              - `API adjusted = 40.000 kg × (100.0 / actual assay %)`
+              - `MCC adjusted = 30.000 kg - (API adjusted - 40.000 kg)`
+
+              Adjustments outside **98.0-102.0%** assay place the batch on QA hold. The EBR
+              performs the calculation with a validated function; the operator does not.
+
+  - title: Equipment
+    subtitle: 21 CFR 211.105
+    content:
+      - text: |
+          Equipment must carry a **CLEAN** status label within its clean hold time and be
+          within calibration and qualification dates. The EBR scans and checks each ID.
+      - table:
+          header:
+            - name: Step
+              width: 1.6
+            - name: Equipment class
+              width: 3
+            - name: Qualified IDs
+              width: 2
+            - name: Working capacity
+              width: 2
+            - name: ID scanned
+              width: 2
+          rows:
+            - [Dispensing, "Floor balance, 150 kg, d = 10 g", BAL-12, 5-150 kg, ~]
+            - [Dispensing, "Bench balance, 6 kg, d = 0.1 g", BAL-07, 0.05-6 kg, ~]
+            - [Granulation, High-shear granulator 600 L, GR-12, 90-150 kg wet mass, ~]
+            - [Drying, Fluid-bed dryer 300 kg, FBD-03, 60-110 kg, ~]
+            - [Milling, "Conical mill, 1.0 mm screen", CM-02, n/a, ~]
+            - [Blending, Bin blender 400 L, BB-05, 60-100 kg, ~]
+            - [Compression, "Rotary press, 36 stations, oval tooling E2", TP-04, n/a, ~]
+            - [Coating, Perforated pan coater 150 L, PC-01, 50-90 kg, ~]
+          caption: Table 7 - Equipment list
+
+  - title: Pre-production checks
+    subtitle: 21 CFR 211.130(e), 211.188(b)(6)
+    content:
+      - table:
+          header:
+            - name: Check
+              width: 4
+            - name: Limit
+              width: 3
+            - name: Result
+              width: 2
+            - name: Performed by
+              width: 2
+            - name: Verified by
+              width: 2
+          rows:
+            - [Line and area clearance per SOP-PRD-0101 v8, No materials or documents from prior batch, ~, ~, ~]
+            - [Room temperature, 18-25 °C, ~, ~, ~]
+            - [Room relative humidity, 30-55% RH, ~, ~, ~]
+            - [Differential pressure to corridor, ">= 10 Pa", ~, ~, ~]
+            - [Materials QC released and within retest date, All lots, ~, ~, ~]
+            - [Operator training current for this MBR version, All operators, ~, ~, ~]
+          caption: Table 8 - Pre-production checks
+
+  - title: Manufacturing instructions
+    subtitle: 21 CFR 211.186(b)(6), (b)(9), 211.111
+    content:
+      - text: |
+          Perform one action per step. When a value falls outside its range, **stop**, notify
+          the supervisor, and open a deviation per SOP-QA-0200 v11 before continuing.
+          CPPs are marked **(CPP)**. The EBR blocks a step until its predecessors are signed.
+
+    sections:
+      - title: Dispensing and charge-in
+        content:
+          - text: |
+              Weigh each component on a balance whose minimum weight is below the target.
+              A second person verifies every weighing and every addition (211.101(c)-(d)),
+              unless the balance is integrated with the EBR, which then records the check.
+          - table:
+              header:
+                - name: Step
+                  width: 1
+                - name: Instruction
+                  width: 5
+                - name: Target
+                  width: 2
+                - name: Actual
+                  width: 1.5
+                - name: Done / Verif.
+                  width: 2
+              rows:
+                - ["1.1", Scan each container lot and container number, All containers, ~, ~]
+                - ["1.2", Weigh adjusted API quantity, "Per 3.1 ± 0.1%", ~, ~]
+                - ["1.3", Weigh adjusted MCC 102 quantity, "Per 3.1 ± 0.1%", ~, ~]
+                - ["1.4", Weigh remaining components, "Table 6 ± 0.5%", ~, ~]
+                - ["1.5", Label each dispensed container with batch and step, All containers, ~, ~]
+              caption: Table 9 - Dispensing
+
+      - title: Granulation and drying
+        content:
+          - title:
+              text: Precautions
+              toc: false
+          - text: |
+              Examplol is an OEB 3 compound. Wear PAPR during charging and discharge.
+          - table:
+              header:
+                - name: Step
+                  width: 1
+                - name: Instruction
+                  width: 5
+                - name: Target and range
+                  width: 3
+                - name: Actual
+                  width: 1.5
+              rows:
+                - ["2.1", "Dissolve povidone K30 in purified water (3.200 kg in 12.800 kg)", "Clear solution, 20-25 °C", ~]
+                - ["2.2", "Charge API, MCC 102 and intragranular croscarmellose into GR-12", 76.000 kg, ~]
+                - ["2.3", Dry-mix at low impeller speed, "150 ± 10 rpm, 3-4 min", ~]
+                - ["2.4", Add binder solution at constant rate (CPP), "1.6 ± 0.2 kg/min", ~]
+                - ["2.5", Wet-mass until power end point (CPP), "4.5 ± 0.5 kW, 2-6 min", ~]
+                - ["2.6", Transfer wet mass to FBD-03, Complete transfer, ~]
+                - ["2.7", Dry until loss on drying passes (CPP), "Inlet 60 ± 5 °C; LOD 1.0-2.5%", ~]
+                - ["2.8", Mill dried granules through CM-02, 1.0 mm screen, ~]
+                - ["2.9", Weigh milled granules, Theoretical 76.000 kg, ~]
+              caption: Table 10 - Granulation and drying
+          - text: |
+              Hold time for dried granules: **max 30 days** in closed, double-lined drums
+              (HTS-0012 v2). Step 3.1 cannot start after the hold time has expired.
+
+      - title: Blending and compression
+        content:
+          - table:
+              header:
+                - name: Step
+                  width: 1
+                - name: Instruction
+                  width: 5
+                - name: Target and range
+                  width: 3
+                - name: Actual
+                  width: 1.5
+              rows:
+                - ["3.1", Charge granules and extragranular croscarmellose and silica into BB-05, 79.200 kg, ~]
+                - ["3.2", Blend (CPP), "12 rpm, 15 ± 1 min", ~]
+                - ["3.3", Sample for blend uniformity (IPC-3.3), 10 locations, ~]
+                - ["3.4", Add magnesium stearate and blend (CPP), "12 rpm, 3 ± 0.5 min", ~]
+                - ["3.5", Weigh final blend, Theoretical 80.000 kg, ~]
+                - ["3.6", Set up TP-04 with tooling E2 and run setup tablets, Pass IPC-3.7, ~]
+                - ["3.7", Compress (CPP main compression force), "12 ± 2 kN; 25-40 rpm", ~]
+                - ["3.8", Weigh accepted core tablets, Theoretical 80.000 kg, ~]
+              caption: Table 11 - Blending and compression
+
+      - title: Film coating
+        content:
+          - table:
+              header:
+                - name: Step
+                  width: 1
+                - name: Instruction
+                  width: 5
+                - name: Target and range
+                  width: 3
+                - name: Actual
+                  width: 1.5
+              rows:
+                - ["4.1", Prepare 20% w/w coating suspension, "2.400 kg in 9.600 kg water, 45 min stir", ~]
+                - ["4.2", Charge cores into PC-01 and preheat, "Bed 40-45 °C", ~]
+                - ["4.3", Spray suspension (CPP), "Spray rate 180 ± 20 g/min; bed 40-45 °C", ~]
+                - ["4.4", Spray until weight gain is reached (CPP), "3.0 ± 0.3%", ~]
+                - ["4.5", Cure and cool, "10 min at 45 °C, then < 30 °C", ~]
+                - ["4.6", Weigh coated tablets, Theoretical 82.400 kg, ~]
+              caption: Table 12 - Film coating
+
+  - title: In-process controls
+    subtitle: 21 CFR 211.110
+    content:
+      - text: |
+          On any failure, hold the batch, notify QA, and investigate per 211.192. QC results
+          are received from LIMS; manual entry is a controlled exception.
+      - table:
+          header:
+            - name: IPC
+              width: 1.2
+            - name: Attribute
+              width: 2
+            - name: Sampling
+              width: 2.6
+            - name: Method
+              width: 1.6
+            - name: Acceptance criteria
+              width: 3
+            - name: Result
+              width: 1.3
+          rows:
+            - [IPC-2.7, Loss on drying, "3 × 5 g, end of drying", TM-0102 v4, 1.0-2.5%, ~]
+            - [IPC-3.3, Blend uniformity, "10 locations, 1-3× unit weight", TM-0451 v3, "Mean 90.0-110.0%, RSD <= 5.0%", ~]
+            - [IPC-3.7a, Tablet weight, "20 tablets every 30 min", TM-0200 v6, "400.0 mg ± 5.0%", ~]
+            - [IPC-3.7b, Hardness, "10 tablets every 30 min", TM-0201 v5, 100-160 N, ~]
+            - [IPC-3.7c, Thickness, "10 tablets every 30 min", TM-0202 v5, 5.4-5.8 mm, ~]
+            - [IPC-3.7d, Friability, "Start, middle, end", TM-0203 v3, "<= 0.8%", ~]
+            - [IPC-4.4, Coating weight gain, "100 tablets per pan", TM-0210 v2, 2.7-3.3%, ~]
+          caption: Table 13 - In-process controls
+
+  - title: Yield and reconciliation
+    subtitle: 21 CFR 211.103, 211.186(b)(7), 211.192
+    content:
+      - text: |
+          `% of theoretical = actual yield / theoretical yield × 100`. The actual yield includes
+          accepted product and QC samples; it excludes setup tablets and rejects, which are
+          reconciled separately. The EBR calculates each yield with a validated function.
+          A result outside its limits requires an investigation before the next phase.
+      - table:
+          header:
+            - name: Phase
+              width: 2
+            - name: Theoretical (kg)
+              type: float
+              format: .3f
+            - name: Min
+              type: percent
+            - name: Max
+              type: percent
+            - name: Actual (kg)
+            - name: "% theor."
+          rows:
+            - [Milled granules, 76.000, 97.0, 101.0, ~, ~]
+            - [Final blend, 80.000, 97.0, 101.0, ~, ~]
+            - [Core tablets, 80.000, 95.0, 100.5, ~, ~]
+            - [Coated tablets, 82.400, 94.0, 100.0, ~, ~]
+          caption: Table 14 - Yield limits
+      - chart:
+          type: bar
+          title: Coated tablet yield, validation and commercial batches
+          y_label: "% of theoretical"
+          x_label: Batch
+          data:
+            - {x: PV-1, y: 97.4}
+            - {x: PV-2, y: 96.8}
+            - {x: PV-3, y: 97.9}
+            - {x: C-101, y: 97.2}
+            - {x: C-102, y: 96.1}
+            - {x: C-103, y: 97.6}
+            - {x: C-104, y: 96.9}
+            - {x: C-105, y: 97.3}
+          caption: Figure 1 - Yield justification (mean 97.2%, limits 94.0-100.0%)
+
+  - title: Packaging and labeling
+    subtitle: 21 CFR 211.122-211.137, 211.186(b)(8)
+    content:
+      - table:
+          header:
+            - name: Item code
+              width: 1.5
+            - name: Description
+              width: 4
+            - name: Version
+              width: 1.5
+            - name: Qty per 1,000 bottles
+              type: int
+              width: 1.5
+          rows:
+            - [PK-3001, "HDPE bottle, 60 cc, white", v4, 1000]
+            - [PK-3102, "PP child-resistant closure, 33 mm, induction seal", v3, 1000]
+            - [PK-3200, "Desiccant canister, 1 g silica gel", v2, 1000]
+            - [ART-0012-US, "Bottle label, 30 tablets", v5, 1000]
+            - [ART-0013-US, Package insert, v7, 1000]
+          caption: Table 15 - Packaging materials
+      - text: |
+          The approved label specimen **ART-0012-US v5** is linked from the labeling system and
+          carries the labeling approver's signature. Lot number and expiry date are printed
+          online and verified at start-up and every 30 minutes by the vision system (challenged
+          at start, after every stop, and at end of run).
+
+          Label reconciliation limit: **issued = used + returned + destroyed**, with zero
+          tolerance for coded labels. Any discrepancy requires an investigation (211.125).
+          Line clearance is performed before and after packaging (211.130(e)).
+
+  - title: Deviations and review
+    subtitle: 21 CFR 211.100(b), 211.192
+    content:
+      - text: |
+          The EBR flags the following for review by exception:
+
+          - Values outside a range, and any overridden sequencing
+          - Late or backdated entries, and missing second-person verifications
+          - Yield excursions and IPC failures
+          - Expired hold times or equipment status
+
+          Production reviews all flags before handing the record to QA. QA reviews every flag,
+          every linked deviation, and the audit trail of the batch before disposition.
+
+  - title: Compliance traceability
+    subtitle: Where each regulatory element is satisfied
+    content:
+      - title: Master record content (211.186(b))
+      - table:
+          header:
+            - name: Ref
+              width: 1
+            - name: Requirement
+              width: 5
+            - name: Section
+              width: 2
+          rows:
+            - ["(b)(1)", "Name, strength, dosage form", "2"]
+            - ["(b)(2)", Active per unit; total unit weight, "2"]
+            - ["(b)(3)", Complete component list with specific names or codes, "3"]
+            - ["(b)(4)", Weights in a single unit system; variations justified, "3, 3.1"]
+            - ["(b)(5)", Statement of any calculated excess, "3"]
+            - ["(b)(6)", Theoretical weights at appropriate phases, "6"]
+            - ["(b)(7)", Theoretical yield with investigation limits, "8"]
+            - ["(b)(8)", "Containers, closures, labeling specimens", "9"]
+            - ["(b)(9)", "Instructions, sampling, testing, specs, precautions", "5-7"]
+          caption: Table 16 - 211.186(b) matrix
+      - title: Executed record capture (211.188(b))
+      - table:
+          header:
+            - name: Ref
+              width: 1
+            - name: Executed record must contain
+              width: 4
+            - name: Capture point
+              width: 3
+          rows:
+            - ["(b)(1)", Dates, System timestamps on every entry]
+            - ["(b)(2)", Major equipment and lines, Table 7 scan column]
+            - ["(b)(3)", Component batch identification, Step 1.1 lot scan]
+            - ["(b)(4)", Weights and measures used, Steps 1.2-1.4 balance integration]
+            - ["(b)(5)", In-process and laboratory results, Table 13 via LIMS]
+            - ["(b)(6)", Packaging area inspection before and after, Table 8; section 9]
+            - ["(b)(7)", Actual and % theoretical yield, Table 14]
+            - ["(b)(8)", Labeling control records, Section 9 reconciliation]
+            - ["(b)(10)", Sampling performed, IPC sample IDs]
+            - ["(b)(11)", Persons performing and checking each step, E-signature per step]
+            - ["(b)(12)", Investigations, Deviation linkage (section 10)]
+          caption: Table 17 - 211.188(b) matrix
