@@ -1,0 +1,83 @@
+# Operator manual: three section levels, deep TOC, in-content title/subtitle, rich markdown.
+title: Granulator GR-12 Operator Manual
+subtitle: Rev. 3.2
+author: Training
+summary:
+  title: Contents
+  depth: 3
+style:
+  numbered: true
+
+sections:
+  - title: Safety
+    content:
+      - text: |
+          Read this section before operating the equipment.
+          Contact [EHS](https://www.example.com/ehs) for questions.
+
+          - Wear PPE at all times
+          - Lock out / tag out before opening the chamber
+          - Never bypass interlocks
+
+    sections:
+      - title: Personal protective equipment
+        content:
+          - text: |
+              Required PPE for routine operation:
+
+              1. Safety glasses
+              2. Hearing protection
+              3. Cut-resistant gloves when handling blades
+
+        sections:
+          - title: Contaminated areas
+            content:
+              - text: |
+                  In Grade C areas, additional gowning applies.
+                  Follow SOP `SOP-CLEAN-014` for gowning steps.
+              - title: Gowning sequence
+              - subtitle: Donning order
+              - text: |
+                  Cap -> mask -> gown -> gloves. Reverse for doffing.
+                  Mark damaged garments with a **red** tag.
+
+  - title: Startup
+    content:
+      - text: |
+          Power on the HMI and wait for the `READY` status.
+          Verify that the recipe `WET-GRAN-STD` is loaded.
+
+    sections:
+      - title: Pre-checks
+        content:
+          - title: Mechanical checks
+          - text: |
+              Confirm:
+
+              - Bowl is clean and dry
+              - Discharge valve is closed
+              - Impeller turns freely by hand (power isolated)
+
+          - title: Instrument checks
+          - subtitle: Sensors and setpoints
+          - text: |
+              Compare HMI readings with the batch record.
+              Abort if any critical sensor shows `FAULT`.
+
+        sections:
+          - title: Abort criteria
+            content:
+              - text: |
+                  Abort and notify the supervisor when:
+
+                  - Vibration exceeds `2.0 mm/s`
+                  - Bowl temperature exceeds `70 C`
+                  - Any interlock opens unexpectedly
+
+  - title: Shutdown
+    content:
+      - text: |
+          Run the clean-in-place recipe, then power down.
+          Record the cycle number in the equipment log.
+      - subtitle: End-of-shift notes
+      - text: Leave the bowl open to dry overnight unless the next batch is scheduled.

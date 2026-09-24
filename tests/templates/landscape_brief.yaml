@@ -1,0 +1,68 @@
+# Landscape brief: orientation, font, margin, and heading_sizes theme overrides.
+title: Executive Brief - Capacity
+subtitle: Site overview for leadership
+author: Ops
+style:
+  orientation: landscape
+  font: times
+  margin: 22
+  heading_sizes: [18, 14, 12, 11]
+  numbered: false
+
+sections:
+  - title: Line utilization
+    content:
+      - text: Utilization for the last thirteen weeks across the three primary lines.
+      - table:
+          header:
+            - Week
+            - name: Line A
+              type: percent
+              format: .0f
+            - name: Line B
+              type: percent
+              format: .0f
+            - name: Line C
+              type: percent
+              format: .0f
+            - name: Overall
+              type: percent
+              format: .0f
+          rows:
+            - [W1, 78, 82, 71, 77]
+            - [W2, 81, 79, 74, 78]
+            - [W3, 85, 84, 76, 82]
+            - [W4, 88, 86, 80, 85]
+            - [W5, 84, 88, 79, 84]
+            - [W6, 90, 87, 83, 87]
+            - [W7, 86, 85, 81, 84]
+            - [W8, 91, 89, 85, 88]
+            - [W9, 87, 90, 82, 86]
+            - [W10, 92, 91, 86, 90]
+            - [W11, 89, 88, 84, 87]
+            - [W12, 93, 92, 88, 91]
+            - [W13, 90, 91, 87, 89]
+          caption: Table 1 - Weekly utilization (%)
+
+      - chart:
+          type: line
+          title: Overall utilization trend
+          x_label: Week
+          y_label: Utilization %
+          width: 90%
+          aspect: 0.35
+          data:
+            - {x: W1, y: 77}
+            - {x: W2, y: 78}
+            - {x: W3, y: 82}
+            - {x: W4, y: 85}
+            - {x: W5, y: 84}
+            - {x: W6, y: 87}
+            - {x: W7, y: 84}
+            - {x: W8, y: 88}
+            - {x: W9, y: 86}
+            - {x: W10, y: 90}
+            - {x: W11, y: 87}
+            - {x: W12, y: 91}
+            - {x: W13, y: 89}
+          caption: Figure 1 - Overall trend

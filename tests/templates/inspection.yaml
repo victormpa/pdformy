@@ -1,0 +1,81 @@
+# Equipment inspection: grids with columns, ratio, wrapping; image align variants.
+title: Equipment Inspection EI-441
+subtitle: Granulator GR-12 - annual check
+author: Maintenance
+
+sections:
+  - title: Visual inspection
+    content:
+      - text: Chamber and seal condition after cleaning. Photo taken from the discharge side.
+      - grid:
+          columns: 2
+          content:
+            - image:
+                source: ../assets/image1.1.png
+                caption: Photo 1 - Chamber interior
+                width: 100%
+                align: center
+            - table:
+                header:
+                  - Checkpoint
+                  - name: Reading
+                    type: float
+                    format: .1f
+                  - Unit
+                  - Result
+                rows:
+                  - [Seal gap, 0.8, mm, Pass]
+                  - [Blade clearance, 2.1, mm, Pass]
+                  - [Bowl temp, 22.4, C, Pass]
+                  - [Vibration, 1.2, mm/s, Pass]
+                caption: Table 1 - Readings
+
+  - title: Performance check
+    content:
+      - text: Idle-run profile compared with the last two annual inspections.
+      - grid:
+          ratio: [2, 1]
+          gap: 6
+          content:
+            - chart:
+                type: bar
+                title: Vibration by axis
+                data:
+                  - {x: X, y: 1.1}
+                  - {x: Y, y: 1.3}
+                  - {x: Z, y: 0.9}
+                caption: Figure 1 - Vibration
+            - text: |
+                All axes remain within the **2.0 mm/s** limit.
+                Next calibration due **2025-09-01**.
+
+  - title: Photo log
+    content:
+      - text: Additional views wrap onto a second grid row when `columns` is 2.
+      - grid:
+          columns: 2
+          content:
+            - image:
+                source: ../assets/image1.1.png
+                caption: Photo 2 - Drive end (left)
+                width: 80%
+                align: left
+            - image:
+                source: ../assets/image1.1.png
+                caption: Photo 3 - Discharge (right)
+                width: 80%
+                align: right
+            - image:
+                source: ../assets/image1.1.png
+                caption: Photo 4 - Control panel
+                width: 60%
+                align: center
+            - table:
+                header:
+                  - View
+                  - Status
+                rows:
+                  - [Drive end, OK]
+                  - [Discharge, OK]
+                  - [Panel, OK]
+                caption: Table 2 - Photo checklist

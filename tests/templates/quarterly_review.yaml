@@ -1,0 +1,74 @@
+# Quarterly business review: every chart type, labels, captions, custom aspect.
+title: Q3 2024 Quarterly Review
+subtitle: Commercial operations
+author: Analytics
+summary: true
+
+sections:
+  - title: Revenue by region
+    content:
+      - text: Regional revenue for the quarter, in millions of USD.
+      - chart:
+          type: bar
+          title: Revenue by region
+          x_label: Region
+          y_label: USD M
+          caption: Figure 1 - Regional revenue
+          data:
+            - {x: North America, y: 42}
+            - {x: EMEA, y: 31}
+            - {x: APAC, y: 28}
+            - {x: LATAM, y: 12}
+
+  - title: Plan versus actual
+    content:
+      - text: Monthly units shipped against the annual plan.
+      - chart:
+          type: line
+          title: Plan vs actual
+          x_label: Month
+          y_label: Units (k)
+          caption: Figure 2 - Monthly shipments
+          series:
+            - name: Plan
+              data:
+                - {x: Jul, y: 110}
+                - {x: Aug, y: 115}
+                - {x: Sep, y: 120}
+            - name: Actual
+              data:
+                - {x: Jul, y: 108}
+                - {x: Aug, y: 121}
+                - {x: Sep, y: 117}
+
+  - title: Channel mix
+    content:
+      - text: Share of orders by sales channel.
+      - chart:
+          type: pie
+          title: Orders by channel
+          caption: Figure 3 - Channel mix
+          aspect: 0.7
+          width: 70%
+          data:
+            - {x: Direct, y: 45}
+            - {x: Partner, y: 30}
+            - {x: Online, y: 25}
+
+  - title: Price versus volume
+    content:
+      - text: Scatter of average selling price against monthly volume for top SKUs.
+      - chart:
+          type: scatter
+          title: ASP vs volume
+          x_label: Volume (k)
+          y_label: ASP (USD)
+          caption: Figure 4 - Price / volume
+          aspect: 0.55
+          data:
+            - {x: 10, y: 24.5}
+            - {x: 22, y: 21.0}
+            - {x: 35, y: 18.2}
+            - {x: 48, y: 16.8}
+            - {x: 61, y: 15.1}
+            - {x: 75, y: 14.0}

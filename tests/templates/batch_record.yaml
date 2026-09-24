@@ -1,0 +1,95 @@
+# Electronic batch record: numbered sections, TOC, nested structure, typed tables.
+title: Batch Record BR-2024-0847
+subtitle: Line 3 - Wet granulation
+author: QA
+output: batch_record.pdf
+summary:
+  title: Contents
+  depth: 2
+style:
+  numbered: true
+
+sections:
+  - title: Materials
+    subtitle: Dispensed quantities
+    content:
+      - text: Quantities are in **kg** unless noted. All lots were released prior to dispense.
+      - table:
+          header:
+            - name: Material
+              type: string
+            - name: Lot
+              type: string
+            - name: Qty
+              type: float
+              format: .3f
+            - name: Assay
+              type: percent
+            - name: Expiry
+              type: date
+          rows:
+            - [API-X, LOT-4412, 12.500, 99.2, 2026-06-30]
+            - [Lactose, LOT-8821, 45.000, 100.0, 2027-01-15]
+            - [MCC PH102, LOT-3301, 18.750, 99.8, 2026-11-01]
+            - [Mg Stearate, LOT-1190, 0.625, 98.5, 2025-12-31]
+          caption: Table 1 - Dispensed materials
+
+    sections:
+      - title: Excipients
+        content:
+          - text: Excipients were weighed on balance B-12 (calibrated 2024-03-01).
+          - table:
+              header:
+                - name: Step
+                  type: int
+                - name: Item
+                - name: Target kg
+                  type: float
+                - name: Actual kg
+                  type: float
+                  format: .2f
+              rows:
+                - [1, Binder solution, 2.0, 2.01]
+                - [2, Extra-granular blend, 5.5, 5.48]
+              caption: Table 1.1 - Excipient weighings
+
+  - title: Process
+    content:
+      - text: |
+          Mixing started at **08:15** and completed at **09:40**.
+          No deviations were recorded during granulation.
+      - table:
+          header:
+            - Parameter
+            - name: Setpoint
+              type: float
+            - name: Actual
+              type: float
+            - Unit
+          rows:
+            - [Impeller speed, 150, 148, rpm]
+            - [Chopper speed, 1500, 1495, rpm]
+            - [Granulation time, 8, 8.2, min]
+            - [Drying temp, 60, 59.5, C]
+          caption: Table 2 - Critical process parameters
+
+  - title: Yield
+    content:
+      - text: Theoretical yield based on API input. Acceptable range is 95-105%.
+      - table:
+          header:
+            - Stage
+            - name: Theoretical
+              type: float
+              format: .1f
+            - name: Actual
+              type: float
+              format: .1f
+            - name: Yield
+              type: percent
+              format: .1f
+          rows:
+            - [Wet mass, 76.9, 75.2, 97.8]
+            - [Dried granules, 73.0, 71.8, 98.4]
+            - [Final blend, 74.3, 72.9, 98.1]
+          caption: Table 3 - Stage yields

@@ -1,0 +1,136 @@
+# Long report: multi-section narrative plus a tall table that forces page breaks.
+title: Stability Study ST-882
+subtitle: 24-month real-time - Lot LOT-4412
+author: Stability lab
+summary:
+  title: Contents
+  depth: 2
+
+sections:
+  - title: Protocol summary
+    content:
+      - text: |
+          This report summarises the real-time stability programme for **Lot LOT-4412**.
+          Samples were stored at 25 C / 60% RH and pulled at the scheduled intervals.
+
+          Acceptance criteria follow ICH Q1A. No OOS results were observed through
+          the 24-month time point.
+
+  - title: Sample inventory
+    content:
+      - text: Pull schedule and remaining reserve vials at each station.
+      - table:
+          header:
+            - name: Month
+              type: int
+            - Station
+            - name: Pulled
+              type: int
+            - name: Reserve
+              type: int
+            - Result
+          rows:
+            - [0, Chamber A, 12, 48, Pass]
+            - [1, Chamber A, 6, 42, Pass]
+            - [3, Chamber A, 6, 36, Pass]
+            - [6, Chamber A, 6, 30, Pass]
+            - [9, Chamber A, 6, 24, Pass]
+            - [12, Chamber A, 6, 18, Pass]
+            - [18, Chamber A, 6, 12, Pass]
+            - [24, Chamber A, 6, 6, Pass]
+          caption: Table 1 - Pull inventory
+
+  - title: Assay trend
+    content:
+      - text: Assay (% of label claim) at each pull. Spec range is 95.0-105.0%.
+      - chart:
+          type: line
+          title: Assay over time
+          x_label: Month
+          y_label: Assay %
+          series:
+            - name: Chamber A
+              data:
+                - {x: 0, y: 99.8}
+                - {x: 1, y: 99.6}
+                - {x: 3, y: 99.4}
+                - {x: 6, y: 99.1}
+                - {x: 9, y: 98.9}
+                - {x: 12, y: 98.7}
+                - {x: 18, y: 98.2}
+                - {x: 24, y: 97.9}
+          caption: Figure 1 - Assay
+
+  - title: Individual results
+    content:
+      - text: |
+          Full analytical dataset for the 24-month programme. Columns cover assay,
+          related substances, dissolution, and water content for every replicate.
+      - table:
+          header:
+            - name: ID
+              type: int
+            - name: Month
+              type: int
+            - Replicate
+            - name: Assay
+              type: float
+              format: .2f
+            - name: Impurities
+              type: percent
+              format: .2f
+            - name: Dissolution
+              type: percent
+              format: .0f
+            - name: Water
+              type: percent
+              format: .2f
+          rows:
+            - [1, 0, A, 99.82, 0.12, 98, 1.05]
+            - [2, 0, B, 99.75, 0.11, 97, 1.04]
+            - [3, 0, C, 99.91, 0.13, 99, 1.06]
+            - [4, 1, A, 99.60, 0.14, 98, 1.07]
+            - [5, 1, B, 99.55, 0.15, 97, 1.08]
+            - [6, 1, C, 99.68, 0.13, 98, 1.06]
+            - [7, 3, A, 99.40, 0.16, 97, 1.09]
+            - [8, 3, B, 99.35, 0.17, 96, 1.10]
+            - [9, 3, C, 99.48, 0.15, 98, 1.08]
+            - [10, 6, A, 99.10, 0.19, 96, 1.12]
+            - [11, 6, B, 99.05, 0.20, 95, 1.13]
+            - [12, 6, C, 99.18, 0.18, 97, 1.11]
+            - [13, 9, A, 98.90, 0.22, 95, 1.15]
+            - [14, 9, B, 98.85, 0.23, 94, 1.16]
+            - [15, 9, C, 98.98, 0.21, 96, 1.14]
+            - [16, 12, A, 98.70, 0.25, 95, 1.18]
+            - [17, 12, B, 98.65, 0.26, 94, 1.19]
+            - [18, 12, C, 98.78, 0.24, 96, 1.17]
+            - [19, 18, A, 98.20, 0.30, 93, 1.22]
+            - [20, 18, B, 98.15, 0.31, 92, 1.23]
+            - [21, 18, C, 98.28, 0.29, 94, 1.21]
+            - [22, 24, A, 97.90, 0.34, 92, 1.25]
+            - [23, 24, B, 97.85, 0.35, 91, 1.26]
+            - [24, 24, C, 97.98, 0.33, 93, 1.24]
+            - [25, 0, D, 99.70, 0.12, 98, 1.05]
+            - [26, 1, D, 99.50, 0.14, 97, 1.07]
+            - [27, 3, D, 99.30, 0.16, 96, 1.09]
+            - [28, 6, D, 99.00, 0.19, 95, 1.12]
+            - [29, 9, D, 98.80, 0.22, 94, 1.15]
+            - [30, 12, D, 98.60, 0.25, 94, 1.18]
+            - [31, 18, D, 98.10, 0.30, 92, 1.22]
+            - [32, 24, D, 97.80, 0.34, 91, 1.25]
+            - [33, 0, E, 99.88, 0.11, 99, 1.04]
+            - [34, 1, E, 99.62, 0.14, 98, 1.06]
+            - [35, 3, E, 99.42, 0.16, 97, 1.08]
+            - [36, 6, E, 99.12, 0.19, 96, 1.11]
+            - [37, 9, E, 98.92, 0.22, 95, 1.14]
+            - [38, 12, E, 98.72, 0.25, 95, 1.17]
+            - [39, 18, E, 98.22, 0.30, 93, 1.21]
+            - [40, 24, E, 97.92, 0.34, 92, 1.24]
+          caption: Table 2 - Individual analytical results
+
+  - title: Conclusion
+    content:
+      - text: |
+          Lot LOT-4412 remains within specification through 24 months at the
+          labelled storage condition. The programme may proceed to the next
+          scheduled pull without change to the shelf-life claim.

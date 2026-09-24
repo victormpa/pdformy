@@ -1,0 +1,8 @@
+# Smoke baseline: title, one section, one paragraph.
+title: Minimal Report
+sections:
+  - title: Overview
+    content:
+      - text: |
+          This is the smallest valid report: a title, one section, and a
+          single markdown paragraph.
