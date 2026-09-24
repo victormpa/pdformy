@@ -17,6 +17,14 @@ nav:
     - Summary: summaries/index.md
     - Table: tables/index.md
     - Text: text/index.md
+  - Examples:
+    - Minimal: examples/minimal.md
+    - Batch record: examples/batch_record.md
+    - Inspection: examples/inspection.md
+    - Landscape brief: examples/landscape_brief.md
+    - Long report: examples/long_report.md
+    - Operator manual: examples/operator_manual.md
+    - Quarterly review: examples/quarterly_review.md
 
 theme:
   name: material
@@ -85,7 +93,8 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.keys
   - pymdownx.mark
-  - pymdownx.snippets
+  - pymdownx.snippets:
+      check_paths: true
   - pymdownx.tabbed:
       alternate_style: true
       slugify: !!python/object/apply:pymdownx.slugs.slugify
