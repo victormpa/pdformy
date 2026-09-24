@@ -12,7 +12,7 @@ from . import load
 @click.option(
     "-o", "--output",
     type=click.Path(dir_okay=False, path_type=Path),
-    help="Output PDF (default: the report's `output`, else <title>.pdf).",
+    help="Output PDF (default: <title>.pdf).",
 )
 @click.version_option(package_name="pdformy")
 def main(source: Path, output: Path | None) -> None:

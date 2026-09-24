@@ -16,7 +16,7 @@ poetry install pdformy
 pdformy template.yaml -o out.pdf
 ```
 
-Without `-o`, the file goes to the report's `output` field, or `<title>.pdf` if that is empty, relative to the YAML file. [`template.yaml`](template.yaml) is a working example of every block.
+Without `-o`, the file goes to `<title>.pdf` relative to the YAML file. [`template.yaml`](template.yaml) is a working example of every block.
 
 When the YAML is invalid, the command exits with code 1 and prints one line per error:
 
@@ -32,7 +32,6 @@ bad.yaml: invalid report
 title: Batch Record 001
 subtitle: Line 3        # optional
 author: QA              # optional, PDF metadata
-output: ebr_001.pdf     # optional, default output file
 summary: true           # optional table of contents
 style:                  # optional theme overrides
   numbered: true

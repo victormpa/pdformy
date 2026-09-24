@@ -37,12 +37,10 @@ class Report(BaseModel):
     title: str
     subtitle: str | None = None
     author: str | None = None
-    # Default output file for the CLI, relative to the YAML file.
-    output: str | None = None
     summary: Summary | None = None
     style: Theme = Theme()
     sections: list[Section] = []
-    # Directory relative paths (images, output) resolve against. Set by from_yaml.
+    # Directory relative paths (images) resolve against. Set by from_yaml.
     base_dir: Path = Field(default=Path("."), exclude=True)
 
     @field_validator("summary", mode="before")
@@ -92,10 +90,9 @@ class Report(BaseModel):
         return pdf
 
     def build(self, out: Path | str | None = None) -> Path:
-        """Render to `out` (default: `output`, else `<title>.pdf`) and return the path written."""
+        """Render to `out` (default: `<title>.pdf` next to the YAML) and return the path written."""
         if out is None:
-            name = self.output or f"{self.title}.pdf"
-            out = self.base_dir / name
+            out = self.base_dir / f"{self.title}.pdf"
         out = Path(out)
         out.parent.mkdir(parents=True, exist_ok=True)
         self.render().output(str(out))

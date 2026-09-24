@@ -4,7 +4,6 @@
 ---
 title: Template Example
 subtitle: Every block type pdformy supports # optional
-output: template_example.pdf # optional, default output file (relative to this YAML)
 
 # Optional table of contents, rendered after the title.
 # `summary: true` uses the defaults below.
