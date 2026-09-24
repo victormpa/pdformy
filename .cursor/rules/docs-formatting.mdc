@@ -1,0 +1,18 @@
+---
+description: How to use Material for MkDocs formatting in docs/
+globs: docs/**/*.md
+alwaysApply: false
+---
+
+# Formatting
+
+Use [Material formatting](https://squidfunk.github.io/mkdocs-material/reference/formatting/) only for the cases below. `pymdownx.critic`, `pymdownx.caret`, `pymdownx.keys`, `pymdownx.mark`, and `pymdownx.tilde` are enabled.
+
+Field names, values, and YAML keys stay in backticks. Use bold for a word that must stand out in a sentence, and an admonition for a warning. Do not mark review edits in a published page.
+
+- Highlight a word: `==required==`
+- Underline an insertion: `^^added^^`
+- Strikethrough: `~~removed~~`
+- Subscript and superscript: `H~2~O`, `m^2^`
+- A keystroke: `++ctrl+enter++`. Use a key name Material knows, such as `ctrl`, `alt`, `shift`, `enter`, or `space`.
+- Critic markup is for a suggested edit, not for the docs: `{--deleted--}`, `{++added++}`, `{~~old~>new~~}`, `{>>comment<<}`. Leave it unused.

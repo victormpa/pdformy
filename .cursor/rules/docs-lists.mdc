@@ -1,0 +1,22 @@
+---
+description: How to use Material for MkDocs lists in docs/
+globs: docs/**/*.md
+alwaysApply: false
+---
+
+# Lists
+
+Use [Material lists](https://squidfunk.github.io/mkdocs-material/reference/lists/) for a short series of notes. Unordered and ordered lists are standard Markdown. `def_list` and `pymdownx.tasklist` are enabled.
+
+A field reference stays a table. A list is for notes, constraints, or steps.
+
+```markdown
+- A missing file is reported when the YAML is loaded.
+- A percentage over `100%` is not reduced to fit.
+```
+
+- Use `-` for every unordered item. Do not mix in `*` or `+`.
+- Nest an item by indenting it four spaces.
+- A sequence of steps uses `1.` on every item. The numbers are rewritten when the page is built, so do not number them by hand.
+- A definition list is a term, a blank line, then `:   definition`. Use it for a short glossary, not for a field reference.
+- A task list item is `- [ ]` or `- [x]`. Use it only for a checklist.

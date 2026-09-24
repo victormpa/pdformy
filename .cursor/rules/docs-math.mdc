@@ -1,0 +1,22 @@
+---
+description: How to use Material for MkDocs math in docs/
+globs: docs/**/*.md
+alwaysApply: false
+---
+
+# Math
+
+Use [Material math](https://squidfunk.github.io/mkdocs-material/reference/math/) for a formula that cannot be said in a sentence. `pymdownx.arithmatex` and KaTeX are enabled. Do not add MathJax.
+
+These pages describe YAML fields. Write a simple ratio in words, as in "height divided by width", or put a token in backticks, as in `` `0.5` ``.
+
+A display formula is a `$$` fence on its own lines, and an inline formula is `$f$` inside the sentence. Use one of those pairs. Do not mix in `\(` or `\[`.
+
+```markdown
+$$
+\cos x=\sum_{k=0}^{\infty}\frac{(-1)^k}{(2k)!}x^{2k}
+$$
+```
+
+- One formula per display block. Do not put prose inside the `$$` lines.
+- KaTeX is the renderer. Do not add MathJax beside it.

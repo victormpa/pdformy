@@ -1,0 +1,27 @@
+---
+description: How to use Material for MkDocs code blocks in docs/
+globs: docs/**/*.md
+alwaysApply: false
+---
+
+# Code blocks
+
+Use [Material code blocks](https://squidfunk.github.io/mkdocs-material/reference/code-blocks/) for YAML examples and other source. `pymdownx.highlight`, `pymdownx.inlinehilite`, `pymdownx.snippets`, `pymdownx.superfences`, `attr_list`, and `content.code.copy` are enabled. Code annotations are enabled. Do not add a selection button or extra CSS.
+
+Fence every block with three backticks and a language shortcode. Template examples use `yaml`. The copy button is already on for every block.
+
+````markdown
+```yaml title="grid.yaml" hl_lines="2"
+- grid:
+    columns: 2
+    content: []
+```
+````
+
+- Title: `title="grid.yaml"` after the shortcode when the block is a file or a named example.
+- Line numbers: `linenums="1"`. The start can be another number when a long example is split. `anchor_linenums` is already on, so each number is a link.
+- Highlight lines: `hl_lines="2 3"` or `hl_lines="3-5"`. Counts start at `1` even when `linenums` starts elsewhere.
+- Inline highlight: prefix the span with a shebang, as in `` `#!yaml columns: 2` ``.
+- A YAML comment `# (1)` is a code annotation. Put the numbered note after the fence. `# (1)!` strips the comment characters.
+- Embed a project file with `--8<-- "path"` on its own line inside the fence.
+- The copy button is on for every block. Turn it off for one block with `{ .yaml .no-copy }`. The language shortcode comes first and starts with a dot.

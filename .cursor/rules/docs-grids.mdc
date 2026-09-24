@@ -1,0 +1,30 @@
+---
+description: How to use Material for MkDocs grids in docs/
+globs: docs/**/*.md
+alwaysApply: false
+---
+
+# Grids
+
+Use [Material grids](https://squidfunk.github.io/mkdocs-material/reference/grids/) to lay out equal cards or blocks on a page. This is the documentation layout, not the PDFormy `grid` block. `attr_list` and `md_in_html` are enabled.
+
+A card grid is a list inside a `div` with the classes `grid` and `cards`. The `markdown` attribute is required. Leave a blank line after the opening tag and before the closing tag.
+
+```html
+<div class="grid cards" markdown>
+
+-   __Table__
+
+    ---
+
+    A header row and typed columns.
+
+    [Table](tables/index.md)
+
+</div>
+```
+
+- One card is one list item. The bold line is the title, `---` separates the body, and the last line is the link.
+- A generic grid uses `<div class="grid" markdown>` and holds blocks such as admonitions or code fences. Add `{ .card }` on its own line under a block to give that block a card.
+- Cards wrap to full width when the page is narrow. Do not set a column count.
+- A content tab can sit in a generic grid. The tab syntax is in the content tabs rule.

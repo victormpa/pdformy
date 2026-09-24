@@ -1,0 +1,32 @@
+---
+description: How to use Material for MkDocs content tabs in docs/
+globs: docs/**/*.md
+alwaysApply: false
+---
+
+# Content tabs
+
+Use [Material content tabs](https://squidfunk.github.io/mkdocs-material/reference/content-tabs/) for two or more alternative views of the same thing, such as a shorthand YAML form and the full form. `pymdownx.tabbed` and `pymdownx.superfences` are enabled, and `content.tabs.link` keeps every tab with the same label in sync. Do not use a tab for the next step in a sequence.
+
+A tab starts with `=== "Label"`. Indent its body by four spaces.
+
+````markdown
+=== "Shorthand"
+
+    ```yaml
+    - image: assets/logo.png
+    ```
+
+=== "Full form"
+
+    ```yaml
+    - image:
+        source: assets/logo.png
+    ```
+````
+
+- Use the same label for the same alternative on every page. Clicking "Shorthand" selects every "Shorthand" tab.
+- A tab that holds one code block has no extra horizontal padding. A tab with several blocks does.
+- Nest tabs in an admonition by indenting the `===` lines another four spaces under the admonition body.
+- An anchor is added to each tab. The slug is the label in lower case.
+- A tab can contain another tab group. Indent the inner `===` lines another four spaces. One level is enough for these pages.

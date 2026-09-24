@@ -1,0 +1,24 @@
+---
+description: How to use Material for MkDocs Mermaid diagrams in docs/
+globs: docs/**/*.md
+alwaysApply: false
+---
+
+# Diagrams
+
+Use [Material diagrams](https://squidfunk.github.io/mkdocs-material/reference/diagrams/) when a relationship is clearer as a picture than as prose. A diagram is a fenced block with the `mermaid` language. The Mermaid fence is configured on `pymdownx.superfences`. Do not add custom JavaScript or an ELK layout.
+
+Use only the types Material styles for light and dark mode: `graph`, `sequenceDiagram`, `stateDiagram-v2`, `classDiagram`, and `erDiagram`. Do not use pie charts, Gantt charts, user journeys, git graphs, or requirement diagrams.
+
+````markdown
+```mermaid
+graph LR
+  A[YAML template] --> B[Blocks]
+  B --> C[PDF]
+```
+````
+
+- `graph LR` flows left to right. `graph TD` flows top to bottom. Prefer `LR` for a short process and `TD` when the chart is narrow.
+- Rectangles are steps (`A[Start]`), diamonds are decisions (`B{Error?}`), and edge labels use `-->|Yes|`.
+- Keep a diagram to a handful of nodes so it stays readable on a phone.
+- One diagram per idea. Do not repeat the same steps in the paragraph beside it.

@@ -1,0 +1,23 @@
+---
+description: How to use Material for MkDocs data tables in docs/
+globs: docs/**/*.md
+alwaysApply: false
+---
+
+# Data tables
+
+Use [Material data tables](https://squidfunk.github.io/mkdocs-material/reference/data-tables/) for field references and other tabular data. Markdown tables are supported. Do not add tablesort, a CSV or Excel import plugin, or extra CSS.
+
+A field reference uses these columns, in this order: Field, Type, Default, Description. Put the field name in backticks. Write `required` in Default when the field must be set, and `none` when it is optional and has no default.
+
+```markdown
+| Field | Type | Default | Description |
+| --- | --- | --- | --- |
+| `gap` | number | `5` | Space between columns, in mm. |
+```
+
+- Cells may contain inline code, links, and other inline Markdown.
+- Leave every column left-aligned. The divider is `| --- |`.
+- Center a column with `:---:` and right-align it with `---:` only when the values are numbers that should line up. Field tables stay left-aligned.
+- One header row. Do not merge cells or add a second header.
+- Keep each row on one line.

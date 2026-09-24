@@ -1,0 +1,33 @@
+---
+description: How to use Material for MkDocs admonitions in docs/
+globs: docs/**/*.md
+alwaysApply: false
+---
+
+# Admonitions
+
+Use [Material admonitions](https://squidfunk.github.io/mkdocs-material/reference/admonitions/) for side content that should not break the page flow. `admonition`, `pymdownx.details`, and `pymdownx.superfences` are already enabled. Do not add custom types or extra CSS.
+
+Start a block with `!!!`, a type, and an optional quoted Markdown title. Indent the body by four spaces. Unknown types fall back to `note`. Use only these types: `note`, `abstract`, `info`, `tip`, `success`, `question`, `warning`, `failure`, `danger`, `bug`, `example`, `quote`. Aliases such as `summary` and `tldr` are deprecated.
+
+| Type | Use for |
+| --- | --- |
+| `note` | General aside |
+| `info` | Extra context that is not a warning |
+| `tip` | A recommended way to write the YAML |
+| `warning` | A constraint that is easy to get wrong |
+| `failure` / `danger` | Something that will not render or will break the PDF |
+| `example` | A short worked snippet beside the main explanation |
+| `quote` | A cited remark |
+
+```markdown
+!!! warning "Columns and ratio"
+
+    If both `columns` and `ratio` are set, `columns` must equal the length of `ratio`.
+```
+
+- Custom title: `!!! tip "Optional title"` after the type. An empty title (`!!! note ""`) drops the icon and title. Empty titles do not work on collapsible blocks.
+- Collapsible: `??? note` starts closed. `???+ note` starts open. Prefer these for long optional detail.
+- Nested: indent the inner `!!!` block another four spaces inside the outer body.
+- Inline sidebar: declare `!!! info inline end "Title"` (right) or `!!! info inline "Title"` (left) *before* the paragraph it sits beside. On narrow viewports it becomes full width.
+- Body content can be any Markdown, including lists, tables, and fenced code.

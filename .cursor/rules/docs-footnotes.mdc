@@ -1,0 +1,23 @@
+---
+description: How to use Material for MkDocs footnotes in docs/
+globs: docs/**/*.md
+alwaysApply: false
+---
+
+# Footnotes
+
+Use [Material footnotes](https://squidfunk.github.io/mkdocs-material/reference/footnotes/) for a short aside on one word or sentence. The `footnotes` extension and `content.footnote.tooltips` are enabled, so the note also shows when the marker is hovered.
+
+A reference is `[^id]` with no space before the brackets. The definition uses the same id and can sit anywhere in the file. It always renders at the bottom of the page, with a link back to the reference.
+
+```markdown
+A bare number is a width in millimetres.[^mm]
+
+[^mm]: A value like `"50%"` is a percentage of the available width.
+```
+
+- Put every definition at the end of the file so the page source stays readable.
+- Keep a footnote on one line: `[^mm]: A value like...`
+- A longer note starts on the next line, indented four spaces.
+- Use a short name for the id, as in `[^mm]`, so the reference is obvious in the source.
+- Prefer an admonition when the reader must see the note without leaving the paragraph.

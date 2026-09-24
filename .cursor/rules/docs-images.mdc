@@ -1,0 +1,29 @@
+---
+description: How to use Material for MkDocs images in docs/
+globs: docs/**/*.md
+alwaysApply: false
+---
+
+# Images
+
+Use [Material images](https://squidfunk.github.io/mkdocs-material/reference/images/) for a figure on the page. This is Markdown, not the PDFormy `image` block. `attr_list`, `md_in_html`, and `pymdownx.blocks.caption` are enabled. Do not add the glightbox plugin.
+
+```markdown
+![Line chart with three points](assets/line.png){ align=left width="300" loading=lazy }
+/// caption
+Line chart with three points
+///
+```
+
+- The text in brackets is the alt text. Say what the figure shows. Do not write "image" or leave it empty.
+- The path is relative to the Markdown file. Keep the file under `docs/`.
+- The site palette is `default` and `slate`, so a light and a dark version use the same alt text and a hash on the URL:
+
+```markdown
+![Line chart with three points](assets/line.png#only-light)
+![Line chart with three points](assets/line-dark.png#only-dark)
+```
+
+- `align` is `left` or `right`. There is no centered alignment. A `/// caption` block centers the figure on its own.
+- `width` is a pixel width. `loading=lazy` defers an image below the fold.
+- On a narrow page an aligned image becomes full width, so do not depend on text sitting beside it.

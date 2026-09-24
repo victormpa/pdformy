@@ -1,0 +1,26 @@
+---
+description: How to use Material for MkDocs annotations in docs/
+globs: docs/**/*.md
+alwaysApply: false
+---
+
+# Annotations
+
+Use [Material annotations](https://squidfunk.github.io/mkdocs-material/reference/annotations/) for a short note that opens from a numbered marker. `attr_list`, `md_in_html`, and `pymdownx.superfences` are enabled. Do not change the annotation icon.
+
+A marker is `(1)` in the text. The matching note is a numbered list immediately after the block. The `{ .annotate }` class goes on the outermost block only.
+
+```markdown
+A bare number is a width in millimetres. (1)
+{ .annotate }
+
+1.  A value like `"50%"` is a percentage of the available width.
+```
+
+- One list defines every marker in that block. The numbers start at `1`.
+- In an admonition, add `annotate` after the type: `!!! note annotate "Title"`. The list follows the admonition, not the indented body.
+- Nest a note by putting `{ .annotate }` on that list item and a new list beneath it.
+- Do not put a marker in a table. Annotations do not position correctly there.
+- In a content tab, put `{ .annotate }` on the tab's block, not on the `===` line. Keep the numbered list inside that tab.
+- A code comment such as `# (1)` is a code annotation. Use that syntax inside a fence, not `{ .annotate }`.
+- Prefer an admonition when the reader must see the note without clicking.

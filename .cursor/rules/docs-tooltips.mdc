@@ -1,0 +1,20 @@
+---
+description: How to use Material for MkDocs tooltips in docs/
+globs: docs/**/*.md
+alwaysApply: false
+---
+
+# Tooltips
+
+Use [Material tooltips](https://squidfunk.github.io/mkdocs-material/reference/tooltips/) for a link title or an abbreviation. `abbr`, `attr_list`, `pymdownx.snippets`, and `content.tooltips` are enabled. Do not add a glossary file.
+
+Spell a term out in the sentence the first time it appears. A tooltip is easy to miss, and it is unavailable to someone who does not hover.
+
+```markdown
+[table of contents](summaries/index.md "The summary block")
+```
+
+- Put the title in quotes after the URL, inside the same parentheses. There is one space before the quotes.
+- The title is a short phrase, not a sentence of instructions.
+- An abbreviation is `*[PDF]: Portable Document Format`, placed anywhere in the file. Every later `PDF` on that page gets the tooltip.
+- Do not gather abbreviations into `includes/abbreviations.md`.

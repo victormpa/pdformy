@@ -1,0 +1,21 @@
+---
+description: How to use Material for MkDocs icons and emojis in docs/
+globs: docs/**/*.md
+alwaysApply: false
+---
+
+# Icons and emojis
+
+Use [Material icons and emojis](https://squidfunk.github.io/mkdocs-material/reference/icons-emojis/) only when a mark carries meaning the sentence does not. A shortcode is a name between colons. `attr_list` and `pymdownx.emoji` are enabled, with Twemoji drawn as SVG. Do not add extra CSS or a template include.
+
+```markdown
+:material-alert:
+:fontawesome-solid-check:
+:octicons-check-16:
+:smile:
+```
+
+- Build an icon shortcode from its path under `.icons`, with `/` replaced by `-`. The bundled sets are Material (`material-`), Font Awesome (`fontawesome-solid-`, `fontawesome-regular-`, `fontawesome-brands-`), Octicons (`octicons-`), and Simple Icons (`simple-`).
+- An emoji shortcode is the Twemoji name, as in `:smile:`. Look the name up before using it. Do not paste a Unicode emoji into a heading or a table.
+- These pages are field references. Leave icons out of body text, tables, and headings. The theme icons in `mkdocs.yaml` are separate and stay there.
+- Do not color or animate an icon with `{ .class }` or a stylesheet.

@@ -7,6 +7,16 @@ site_dir: site
 
 nav:
   - Home: index.md
+  - Layouts:
+    - Grid: grids/index.md
+  - Blocks:
+    - Chart: charts/index.md
+    - Heading: headings/index.md
+    - Image: images/index.md
+    - Section: sections/index.md
+    - Summary: summaries/index.md
+    - Table: tables/index.md
+    - Text: text/index.md
 
 theme:
   name: material
@@ -33,16 +43,59 @@ theme:
     - navigation.top
     - search.highlight
     - content.code.copy
+    - content.code.annotate
+    - content.footnote.tooltips
+    - content.tabs.link
+    - content.tooltips
+
+extra_css:
+  - https://unpkg.com/katex@0/dist/katex.min.css
+
+extra_javascript:
+  - javascripts/katex.js
+  - https://unpkg.com/katex@0/dist/katex.min.js
+  - https://unpkg.com/katex@0/dist/contrib/auto-render.min.js
 
 plugins:
   - search
 
 markdown_extensions:
+  - abbr
   - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
   - toc:
       permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.blocks.caption
+  - pymdownx.caret
+  - pymdownx.critic
   - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.highlight:
       anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
   - pymdownx.inlinehilite
-  - pymdownx.superfences
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
