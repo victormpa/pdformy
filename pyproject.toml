@@ -24,4 +24,4 @@ build-backend = "poetry.core.masonry.api"
 packages = [{ include = "pdformy" }]
 
 [dependency-groups]
-dev = ["pytest (>=9.1.1,<10.0.0)", "pypdf (>=6.19.0,<7.0.0)", "mkdocs (>=1.6.1,<2.0.0)"]
+dev = ["pytest (>=9.1.1,<10.0.0)", "pypdf (>=6.19.0,<7.0.0)", "mkdocs (>=1.6.1,<2.0.0)", "pytest-cov (>=7.1.0,<8.0.0)"]
