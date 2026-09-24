@@ -2,9 +2,9 @@ from pathlib import Path
 
 from pypdf import PdfReader
 
-from pdfreport import Grid, Report, Section, Table, Text, Theme
-from pdfreport.context import RenderContext
-from pdfreport.report import ReportPDF
+from pdformy import Grid, Report, Section, Table, Text, Theme
+from pdformy.context import RenderContext
+from pdformy.report import ReportPDF
 
 ROOT = Path(__file__).parent.parent
 
@@ -25,9 +25,20 @@ def test_template_renders(tmp_path):
     reader = PdfReader(out)
     text = "\n".join(page.extract_text() for page in reader.pages)
 
-    for expected in ["Template Example", "Contents", "Section 1.1", "Row 2 Cell 2", "100.5", "Grid view", "Image 2.1"]:
+    for expected in [
+        "Template Example",
+        "Contents",
+        "Section 1.1",
+        "Row 2 Cell 2",
+        "100.5",
+        "Grid view",
+        "Image 2.1",
+    ]:
         assert expected in text
-    assert outline_titles(reader) == [["Section 1", [["Section 1.1", []]]], ["Grid view", []]]
+    assert outline_titles(reader) == [
+        ["Section 1", [["Section 1.1", []]]],
+        ["Grid view", []],
+    ]
     # The TOC lists each section with its page number.
     assert "Grid view" in reader.pages[0].extract_text()
 
@@ -37,12 +48,23 @@ def test_python_api_and_numbering(tmp_path):
         title="EBR 001",
         style=Theme(numbered=True),
         sections=[
-            Section(title="Materials", content=[Table(header=["Item", "Qty"], rows=[["API", 10]])]),
-            Section(title="Steps", sections=[Section(title="Mixing", content=[Text(markdown="Mix *well*.")])]),
+            Section(
+                title="Materials",
+                content=[Table(header=["Item", "Qty"], rows=[["API", 10]])],
+            ),
+            Section(
+                title="Steps",
+                sections=[
+                    Section(title="Mixing", content=[Text(markdown="Mix *well*.")])
+                ],
+            ),
         ],
     )
     reader = PdfReader(report.build(tmp_path / "ebr.pdf"))
-    assert outline_titles(reader) == [["1  Materials", []], ["2  Steps", [["2.1  Mixing", []]]]]
+    assert outline_titles(reader) == [
+        ["1  Materials", []],
+        ["2  Steps", [["2.1  Mixing", []]]],
+    ]
 
 
 def test_grid_ends_below_tallest_cell_and_restores_margins():
@@ -50,7 +72,9 @@ def test_grid_ends_below_tallest_cell_and_restores_margins():
     pdf = ReportPDF(theme)
     pdf.add_page()
     ctx = RenderContext(pdf=pdf, theme=theme)
-    short, tall = Text(markdown="short"), Text(markdown="\n\n".join(["tall paragraph"] * 6))
+    short, tall = Text(markdown="short"), Text(
+        markdown="\n\n".join(["tall paragraph"] * 6)
+    )
 
     top = pdf.y
     tall.render(ctx)

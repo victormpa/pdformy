@@ -1,9 +1,9 @@
 # This template outlines how to create a structured PDF report.
-# Render it with:  python -m pdfreport template.yaml [-o out.pdf]
+# Render it with:  python -m pdformy template.yaml [-o out.pdf]
 
 ---
 title: Template Example
-subtitle: Every block type pdfreport supports # optional
+subtitle: Every block type pdformy supports # optional
 output: template_example.pdf # optional, default output file (relative to this YAML)
 
 # Optional table of contents, rendered after the title.
@@ -12,7 +12,7 @@ summary:
   title: Contents
   depth: 2 # section levels listed
 
-# Optional theme overrides (see pdfreport/context.py:Theme for every field).
+# Optional theme overrides (see pdformy/context.py:Theme for every field).
 style:
   numbered: false # prefix titles with 1, 1.1, ...
 

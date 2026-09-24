@@ -1,4 +1,4 @@
-# pdfreport
+# pdformy
 
 Builds PDF reports from YAML files (or straight from Python) with [fpdf2](https://py-pdf.github.io/fpdf2/). A report is a tree of sections, and each section holds an ordered list of blocks: text, images, tables, charts and grids. The YAML is checked with pydantic before anything is drawn, so a mistake is reported with its location instead of producing a broken PDF.
 
@@ -8,7 +8,7 @@ Run from `pdformy/`:
 
 ```bash
 poetry install    # or: source .venv/bin/activate
-python -m pdfreport ../template.yaml -o out.pdf
+python -m pdformy ../template.yaml -o out.pdf
 ```
 
 Without `-o`, the file goes to the report's `output` field, or `<title>.pdf` if that is empty, relative to the YAML file. [`template.yaml`](../template.yaml) is a working example of every block.
@@ -87,7 +87,7 @@ The TOC is rendered right after the report title, and page numbers are filled in
 The YAML keys map one-to-one onto the classes, so a report can be built in code:
 
 ```python
-from pdfreport import Report, Section, Table, Text, Chart, Point, Theme
+from pdformy import Report, Section, Table, Text, Chart, Point, Theme
 
 Report(
     title="EBR 001",
@@ -103,15 +103,15 @@ Report(
 ).build("ebr_001.pdf")
 ```
 
-`Report.from_yaml(path)` (or `pdfreport.load(path)`) and `Report.from_dict(data, base_dir)` build the same objects from YAML or a dict. `build(out)` writes the PDF and returns its path. `render()` returns the `fpdf.FPDF` object without writing it.
+`Report.from_yaml(path)` (or `pdformy.load(path)`) and `Report.from_dict(data, base_dir)` build the same objects from YAML or a dict. `build(out)` writes the PDF and returns its path. `render()` returns the `fpdf.FPDF` object without writing it.
 
 ## Adding a block
 
 Subclass `Block`, declare the fields, implement `render(ctx)` and register the YAML key. The class must be imported (e.g. from [`__init__.py`](__init__.py)) before any YAML is parsed.
 
 ```python
-from pdfreport import Block, register
-from pdfreport.context import RenderContext
+from pdformy import Block, register
+from pdformy.context import RenderContext
 
 @register("signature")
 class Signature(Block):
