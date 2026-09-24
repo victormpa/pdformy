@@ -1,0 +1,105 @@
+# This template outlines how to create a structured PDF report.
+# Render it with:  python -m pdfreport template.yaml [-o out.pdf]
+
+---
+title: Template Example
+subtitle: Every block type pdfreport supports # optional
+output: template_example.pdf # optional, default output file (relative to this YAML)
+
+# Optional table of contents, rendered after the title.
+# `summary: true` uses the defaults below.
+summary:
+  title: Contents
+  depth: 2 # section levels listed
+
+# Optional theme overrides (see pdfreport/context.py:Theme for every field).
+style:
+  numbered: false # prefix titles with 1, 1.1, ...
+
+sections:
+  # Title and subtitle are always displayed.
+  - title: Section 1
+    subtitle: Subtitle 1
+
+    # Sections can be nested.
+    sections:
+      - title: Section 1.1
+
+        # A section's body is an ordered list of blocks:
+        # text, image, table, chart, grid, title, subtitle.
+        content:
+          # Text block, supports markdown.
+          - text: |
+              Markdown text is supported.
+              Use **bold** or *italic* text.
+              Use `code` text.
+              Use [link](https://www.example.com) text.
+              Use a list:
+
+              - Item 1
+              - Item 2
+              - Item 3
+
+          # Image block. Paths are relative to this YAML file.
+          - image:
+              source: tests/assets/image1.1.png
+              caption: Image 1.1 # optional
+              width: 50% # optional, % of the available width or mm
+              align: center # optional: left, center, right
+
+          # Table block. A header entry is a column name or a mapping.
+          - table:
+              header:
+                - name: Column 1
+                  type: string # string, int, float, percent, date
+                - Column 2
+                - name: Column 3
+                  type: float
+                  format: .1f # optional python format spec
+              rows:
+                - ['Row 1 Cell 1', 'Row 1 Cell 2', 1.25]
+                - ['Row 2 Cell 1', 'Row 2 Cell 2', 10]
+                - ['Row 3 Cell 1', 'Row 3 Cell 2', 100.5]
+              caption: Table 1.1 # optional
+
+          # Chart block: bar, line, pie or scatter.
+          - chart:
+              type: bar
+              title: Values by category # optional
+              data:
+                - x: 'Category 1'
+                  y: 10
+                - x: 'Category 2'
+                  y: 20
+                - x: 'Category 3'
+                  y: 15
+
+          # Several named series instead of `data`.
+          - chart:
+              type: line
+              x_label: Month
+              y_label: Units
+              series:
+                - name: Plan
+                  data: [{x: Jan, y: 10}, {x: Feb, y: 14}, {x: Mar, y: 18}]
+                - name: Actual
+                  data: [{x: Jan, y: 9}, {x: Feb, y: 15}, {x: Mar, y: 17}]
+
+  # There's also a grid view: blocks side by side, wrapping every `columns` blocks.
+  - title: Grid view
+    content:
+      - grid:
+          columns: 2 # or `ratio: [2, 1]` for relative widths
+          content:
+            - image:
+                source: tests/assets/image1.1.png
+                caption: Image 2.1
+            - table:
+                header:
+                  - name: Column 1
+                    type: string
+                  - name: Column 2
+                    type: int
+                rows:
+                  - ['A', 1]
+                  - ['B', 2]
